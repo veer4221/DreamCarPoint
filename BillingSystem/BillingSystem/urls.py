@@ -19,5 +19,11 @@ from CAR import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home,name="home")
+    path('listing/form/',views.home,name="home"),
+    path('base/',views.base,name="base"),
+    path('report/',views.report,name="report"),
+    path('listing/',views.listing,name="listing"),
+    path('dashbord/',views.dashbord,name="dashbord"),
+    path('',views.login,name="login"),
+    
 ]

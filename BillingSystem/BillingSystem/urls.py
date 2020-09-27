@@ -26,4 +26,5 @@ urlpatterns = [
     path('dashbord/',views.dashbord,name="dashbord"),
     path('login/',views.login,name="login"),
     
+    
 ]

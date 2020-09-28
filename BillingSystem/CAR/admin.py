@@ -4,7 +4,7 @@ from .models import customer,car
 # Register your models here.
 @admin.register(customer)
 class customerAdmin(admin.ModelAdmin):
-    list_display =[ 'CUS_ID','CUS_NAME','CUS_CITY','CUS_MO','CUS_EMAIL','CUS_STATE','CUS_Zip','date_modified']
+    list_display =[ 'CUS_ID','CUS_SARNAME','CUS_NAME','CUS_FNAME','CUS_CITY','CUS_MO','CUS_EMAIL','CUS_STATE','CUS_Zip','date_modified']
 
 
 @admin.register(car)

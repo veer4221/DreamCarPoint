@@ -1,17 +1,22 @@
 from django.db import models
-from datetime import datetime
+# from datetime import datetime
 
 # Create your models here.
 
 class customer(models.Model):
     CUS_ID     = models.AutoField(primary_key=True)
+    CUS_SARNAME = models.CharField(max_length=70,null=False)
     CUS_NAME   = models.CharField(max_length=70,null=False)
+    CUS_FNAME   = models.CharField(max_length=70,null=False)
     CUS_CITY   = models.CharField(max_length=70,null=False)
     CUS_MO     = models.CharField(max_length=12,unique=True,null=False)
     CUS_EMAIL  = models.EmailField(unique=True)
     CUS_STATE  = models.CharField(max_length=70)
     CUS_Zip    = models.CharField(max_length= 6)
     date_modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.CUS_NAME
 
 class car(models.Model):
     CUS_ID     = models.ForeignKey(customer,on_delete=models.CASCADE)
@@ -40,3 +45,7 @@ class car(models.Model):
     OTH_EXPENSE_NAME    = models.CharField(max_length= 20)
     OTH_EXPENSE_PRICE   = models.IntegerField()
     date_modified = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.CAR_MODEL
+    

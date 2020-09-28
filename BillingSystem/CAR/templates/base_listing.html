@@ -15,28 +15,129 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'car/css/styles.css' %}" rel="stylesheet" />
-       
-    </head>
+        <link href="{% static 'car/css/Bootstrap.css' %}" rel="stylesheet" />
+            
+        <style>
+        #sideNav{
+        background-color: darkslategray; 
+        }
+        #bootstrapdatatable{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+           
+        }
+        #main{
+             padding:none;
+             margin-top: 10%;
+             margin-bottom: 10%;
+        }
+        /* body {overflow-x: hidden;}
+        html, body {
+             max-width: 100%;
+            overflow-x: hidden;
+        } */
+        .col-12{
+        padding-right: 0!important;
+        padding-left: 0!important;
+        }
+        body{
+        background-color:gainsboro;
+        }
+.row{
+    margin-right: 0px;
+    margin-left: 0px; 
+}
+        
+
+        </style>
+</head>
+
 <body>
-{% include 'base_nav.html' %}
+    <nav class="navbar navbar-expand-lg navbar-dark  fixed-top" id="sideNav">
+        <h3 style="color:cornsilk">Dream Car Point</h3>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">Yogesh Patel</span>
+            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'car/image/profile.jpg' %}" /></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/dashbord">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/listing">listing</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/report">report</a></li>
+            </ul>
+        </div>
+    </nav>
+<div class="container">
+ <div class="row">
+        
+ 
 
-<section class="resume-section" id="report">
-    <div class="resume-section-content">
-       <h1>listing</h1>
+            <div class="col-md-12" id="main">
+                <!-- <h4>Django CRUD (Create Read Update Delete) Example - Bootstrap Datatable</h4>  -->
+                <h1 class="mb-0">
+                    customer
+                    <span style="color:#bd5d38;">List</span>
+                </h1>
+                <span><a href="/addnew" class="btn btn-primary">Add New Record</a></span>  
+                <br>
+                <br>
+                <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+                    <thead>
+                        <th><input type="checkbox" id="checkall" /></th>
+                        <th>ID</th>
+                        <th>SarName</th>
+                        <th>Name</th>
+                        <th>Fathername</th>
+                        <th>Contact</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </thead>
+        <tbody>
+        {% for customer in customer_list %}  
+            <tr>  
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ customer.CUS_ID }}</td>  
+            <td>{{ customer.CUS_SARNAME }}</td>  
+            <td>{{ customer.CUS_NAME }}</td>
+            <td>{{ customer.CUS_FNAME }}</td>  
+            <td>{{ customer.CUS_MO }}</td>  
+             <td><p data-placement="top" data-toggle="tooltip" title="Edit"><a href="/edit/{{ employee.id }}" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ></a></p></td>
+            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><a href="/delete/{{ employee.id }}" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ></a></p></td> 
+             </tr>  
+        {% endfor %} 
+        </tbody>
+                
+        </table>
+                </div>
+            </div>
 
-    </div>
-</section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-<!-- Third party plugin JS-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<!-- Core theme JS-->
-<script src="{% static 'car/js/scripts.js' %}"></script>
+
+
+
+
+
+</div>
+</div>
+
 <script src="{% static 'car/js/jquery.js' %}"></script>
+<!-- <script src="{% static 'car/js/pooper.js' %}"></script> -->
+<script src="{% static 'car/js/scripts.js' %}"></script>
+<script src="{% static 'car/js/bootstrap.js' %}"></script>
+<script src="{% static 'car/js/datatables.js' %}"></script>
+<script src="{% static 'car/js/dataTables.bootstrap4.js' %}"></script>
+
+
 
 <script>
-        $(document).ready(function() {
-    $('#example').DataTable();
+$(document).ready(function() {
+    $('#bootstrapdatatable').DataTable({     
+      "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+        "iDisplayLength": 3
+       } 
+    );
+    
 } );
-</script>
-</body>
+</script>  
+</body> 
+</html>

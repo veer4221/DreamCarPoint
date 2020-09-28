@@ -15,16 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 from CAR import views
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('listing/form/',views.home,name="home"),
     path('base/',views.base,name="base"),
     path('report/',views.report,name="report"),
-    path('listing/',views.listing,name="listing"),
+    path('listing/',views.customerView.as_view(),name="listing"),
     path('dashbord/',views.dashbord,name="dashbord"),
     path('login/',views.login,name="login"),
-    
+        
     
 ]
+
+
+

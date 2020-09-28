@@ -5,7 +5,7 @@ from django.db import models
 
 class customer(models.Model):
     CUS_ID     = models.AutoField(primary_key=True)
-    CUS_SARNAME = models.CharField(max_length=70,null=False)
+    CUS_SARNAME = models.CharField(max_length=20,null=False)
     CUS_NAME   = models.CharField(max_length=70,null=False)
     CUS_FNAME   = models.CharField(max_length=70,null=False)
     CUS_CITY   = models.CharField(max_length=70,null=False)
